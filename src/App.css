@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.login_form {
+  width: 500px;
+  margin: 50px auto;
+}
