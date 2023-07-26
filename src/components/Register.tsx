@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/mylogo.png";
-import Header from "./Header";
+import Footer from "./utilities/Footer";
+// import Header from "./utilities/Header";
 
 const Register = () => {
   return (
     <>
-      <Header />
-      <div className="login_form border-2 border-blue-600 rounded">
-        <form action="" className="py-5 px-4">
+      {/* <Header /> */}
+      <div className="register_form  ">
+        <form action="" className="py-5 px-4 border-2 border-blue-600 rounded">
           <div className="flex justify-center items-center flex-col mb-4">
             <img src={Logo} width={150} height={150} alt="logo" />
             <p className="text-2xl">
@@ -43,6 +44,17 @@ const Register = () => {
           <div className="grid grid-cols-2 gap-2">
             <div>
               <label htmlFor="" className="block text-sm text-gray-600 mt-3">
+                Age
+              </label>
+              <input
+                type="number"
+                placeholder="Enter your age..."
+                className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
+                autoComplete="off"
+              />
+            </div>
+            <div>
+              <label htmlFor="" className="block text-sm text-gray-600 mt-3">
                 Gender
               </label>
               <input
@@ -52,6 +64,9 @@ const Register = () => {
                 autoComplete="off"
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
             <div>
               <label htmlFor="" className="block text-sm text-gray-600 mt-3">
                 Contact
@@ -63,20 +78,7 @@ const Register = () => {
                 autoComplete="off"
               />
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label htmlFor="" className="block text-sm text-gray-600 mt-3">
-                Age
-              </label>
-              <input
-                type="number"
-                placeholder="Enter your age..."
-                className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
-                autoComplete="off"
-              />
-            </div>
             <div>
               <label htmlFor="" className="block text-sm text-gray-600 mt-3">
                 Location
@@ -144,6 +146,8 @@ const Register = () => {
           </p>
         </form>
       </div>
+
+      <Footer />
     </>
   );
 };

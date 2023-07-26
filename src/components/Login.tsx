@@ -3,8 +3,8 @@ import Logo from "../assets/images/mylogo.png";
 
 const Login = () => {
   return (
-    <div className="login_form border-2 border-blue-600 rounded">
-      <form action="" className="py-5 px-4">
+    <div className="login_form ">
+      <form action="" className="py-5 px-4 border-2 border-blue-600 rounded">
         <div className="flex justify-center items-center flex-col mb-4">
           <img src={Logo} width={150} height={150} alt="logo" />
           <p className="text-2xl">

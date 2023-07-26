@@ -4,6 +4,36 @@
 
 
 .login_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 500px; */
+  margin: 120px auto;
+  /* height: 500px */
+}
+
+.login_form form{
+  height: 500px;
   width: 500px;
-  margin: 50px auto;
+}
+
+.register_form form{
+  margin: 0px auto 100px auto;
+  width: 500px;
+}
+
+/* Landing page */
+.home{
+  background-image: url("../src/assets/images/work2.jpeg");
+  background-position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+  background-position: center center;
+  height: 90vh;
+  width: 100%;
+  
+}
+
+body{
+  /* overflow: scroll; */
 }
