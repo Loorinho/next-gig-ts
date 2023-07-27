@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <div className="home flex justify-center items-center px-10">
@@ -13,9 +15,11 @@ const Home = () => {
         </p>
         {/* <p>based on your skillset</p> */}
         <div className="flex justify-center items-center">
+          <Link to={"/gigs"}>
           <button className="bg-blue-700 px-4 py-2 text-white text-xl rounded mt-3">
             Get Started
           </button>
+          </Link>
         </div>
       </div>
     </div>

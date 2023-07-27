@@ -7,7 +7,7 @@ const Layout = () => {
     <>
       <Header />
       {/* <div className="grid grid-cols-6"> */}
-      <div className="">
+      <div className="m-4">
         <Outlet />
       </div>
       <Footer />
