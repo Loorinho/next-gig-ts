@@ -20,7 +20,7 @@ export const fetchGigs = async () => {
             title: gig.title,
             description: gig.description,
             location: gig.location,
-            proice: gig.price
+            price: gig.price
         }
     })
     return gigs   

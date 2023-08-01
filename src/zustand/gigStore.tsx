@@ -1,13 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { Gig } from "./api/api";
 
-type Gig = {
-    id: number,
-    title: string,
-    description?:string,
-    price: number,
-    location: string
-}
+// type Gig = {
+//     id: number,
+//     title: string,
+//     description?:string,
+//     price: number,
+//     location: string
+// }
 
 type GigStoreType = {
     gigs: Gig[],

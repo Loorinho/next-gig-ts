@@ -1,30 +1,14 @@
-import axios from "axios";
-import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 import useGigStore from "../zustand/gigStore";
+import Gig from "./Gig";
 
-type Gig = {
-  id: number;
-  title: string;
-  description?: string;
-  price: number;
-  location: string;
-};
-
-// const myGig: Gig = {
-
-// }
 const GigDetails = () => {
   const params = useParams();
   const gigId: number = Number(params.id);
   const gigs = useGigStore((state) => state.gigs);
 
-  const [gig, setGig] = useState<Gig>()
-
-  useState(() => {
-    const gig = gigs.find((gig) => gig.id === gigId);
-    setGig(gig)
-  })
+  const gig = gigs.find((gig) => gig.id === gigId)
 
   return (
     <div className="flex justify-center">
