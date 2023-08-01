@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Home = () => {
+   const { data: Gigs, isSuccess } = useQuery({
+    queryKey: ["gigs"],
+    queryFn: fetchGigs,
+  });
   
   return (
     <div className="home flex justify-center items-center px-10">
