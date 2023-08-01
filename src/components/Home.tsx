@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  
   return (
     <div className="home flex justify-center items-center px-10">
       <div className="text-white text-3xl">
