@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Gig from "./Gig";
+import useGigStore from "../zustand/gigStore";
 
 export type GigType = {
   id: number,
@@ -13,27 +14,33 @@ export type GigType = {
 };
 
 const GigList = () => {
-  const [gigs, setGigs] = useState<GigType[]>([])
+  // const [gigs, setGigs] = useState<GigType[]>([])
+
+  const gigs = useGigStore(state=>state.gigs)
+  const setGigs = useGigStore((state) => state.setGigs);
+
   async function fetchGigs() {
     const url = "http://127.0.0.1:8000/api/gigs";
     try {
       const response = await axios.get(url);
       setGigs(response.data.gigs)
-      console.log(response.data.gigs);
     } catch (error) {
       console.log(error);
     }
   }
 
-  useEffect(()=> {
+  useMemo(()=> {
     fetchGigs()
   }, [])
   return (
     <div className="m-5 flex justify-center gap-2 flex-wrap ">
-      {gigs.map((gig) => (
-        <Link to={`/gigs/${gig.id}`} key={gig.id}>
-          <Gig gig={gig} />
-        </Link>
+      {gigs?.map((gig) => (
+        <div key={gig.id}>
+
+        {/* // <Link to={`/gigs/${gig.id}`} key={gig.id}> */}
+          <Gig gig={gig}/>
+        </div>
+        // </Link>
       ))}
     </div>
   );

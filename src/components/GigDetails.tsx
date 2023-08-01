@@ -1,27 +1,30 @@
-import { useParams } from "react-router-dom";
-// import { GigType } from "./GigList";
 import axios from "axios";
 import { useState } from "react";
-import { GigType } from "./GigList";
+import { useParams } from "react-router-dom";
+import useGigStore from "../zustand/gigStore";
 
-// type GigDetailsProps = {
-//   gig: GigType;
-// };
-
-
-type GigDetailsProps = {
-  myid: number;
+type Gig = {
+  id: number;
+  title: string;
+  description?: string;
+  price: number;
+  location: string;
 };
 
-const GigDetails = async () => {
-//   const { id } = useParams();
+// const myGig: Gig = {
 
-    const [gig, setGig] = useState()
-  const url = `http://127.0.0.1:8000/api/gigs/${1}`;
+// }
+const GigDetails = () => {
+  const params = useParams();
+  const gigId: number = Number(params.id);
+  const gigs = useGigStore((state) => state.gigs);
 
-  try {
-    const myGig = await axios.get(url);
-  } catch (error) {}
+  const [gig, setGig] = useState<Gig>()
+
+  useState(() => {
+    const gig = gigs.find((gig) => gig.id === gigId);
+    setGig(gig)
+  })
 
   return (
     <div className="flex justify-center">
@@ -36,7 +39,7 @@ const GigDetails = async () => {
           <p className="text-lg mb-2">Job details</p>
           <p>Amount: UGX {gig?.price}</p>
           <p>Location: {gig?.location}</p>
-          <p>{gig?.details}</p>
+          <p>{gig?.description}</p>
 
           <p>{gig?.description}</p>
           <div className="flex justify-center items-center mt-3">
