@@ -24,8 +24,6 @@ const GigDetails = () => {
           <p>Amount: UGX {gig?.price}</p>
           <p>Location: {gig?.location}</p>
           <p>{gig?.description}</p>
-
-          <p>{gig?.description}</p>
           <div className="flex justify-center items-center mt-3">
             <button className="bg-blue-700 text-white w-full rounded py-1 hover:scale-95">
               Apply

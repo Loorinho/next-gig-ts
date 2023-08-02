@@ -22,7 +22,7 @@ const AddGig = () => {
   } = useFormik({
     initialValues: initialGigValues,
     onSubmit: async (values) => {
-      const url = "https://127.0.0.1/api/createGig";
+      const url = "http://127.0.0.1:8000/api/gigs";
 
       const data = {
         title: values.title,
@@ -49,8 +49,9 @@ const AddGig = () => {
   });
 
   return (
-    <div>
+    <div className="gig_form border-2 border-blue-600 px-4 py-5 rounded-lg">
       <form onSubmit={handleSubmit}>
+        <p className="text-center text-blue-600 font-semibold text-xl my-2">Add a new gig</p>
         <GigInput
           handleBlur={handleBlur}
           handleChange={handleChange}
@@ -93,7 +94,7 @@ const AddGig = () => {
         <div className="mt-3 flex justify-between items-center">
           <button
             type="submit"
-            className=" w-full px-3 text-center bg-blue-600 text-white rounded-sm hover:scale-95 outline-none"
+            className=" w-full px-3 py-2 text-center bg-blue-600 text-white rounded-sm hover:scale-95 outline-none"
           >
             Save Gig
           </button>

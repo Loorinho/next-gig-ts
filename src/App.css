@@ -34,6 +34,13 @@
   
 }
 
+
+/* Gigs */
+.gig_form{
+  margin: 20px auto;
+  width: 500px
+}
+
 body{
   /* overflow: scroll; */
 }
