@@ -10,6 +10,7 @@ const AddGig = () => {
     description: "",
     location: "",
     price: 0,
+    date: ''
   };
 
   const {
@@ -29,21 +30,22 @@ const AddGig = () => {
         description: values.description,
         location: values.location,
         price: values.price,
+        date: values.date
       };
 
-    //   console.log("Data: ", data)
+      console.log("Data: ", data)
 
-      try {
-        const response = await axios.post(url, data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+    //   try {
+    //     const response = await axios.post(url, data, {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     });
 
-        console.log("Response: ", response.data);
-      } catch (err) {
-        console.log(err);
-      }
+    //     console.log("Response: ", response.data);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
     },
     validationSchema: GigSchema,
   });
@@ -51,7 +53,9 @@ const AddGig = () => {
   return (
     <div className="gig_form border-2 border-blue-600 px-4 py-5 rounded-lg">
       <form onSubmit={handleSubmit}>
-        <p className="text-center text-blue-600 font-semibold text-xl my-2">Add a new gig</p>
+        <p className="text-center text-blue-600 font-semibold text-xl my-2">
+          Add a new gig
+        </p>
         <GigInput
           handleBlur={handleBlur}
           handleChange={handleChange}
@@ -78,6 +82,15 @@ const AddGig = () => {
           label="Location"
           placeholder="Enter your detailed gig description here..."
           type="text"
+          errors={errors}
+          touched={touched}
+        />
+        <GigInput
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          name="date"
+          label="Date"
+          type="date"
           errors={errors}
           touched={touched}
         />

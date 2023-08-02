@@ -23,6 +23,7 @@ const GigDetails = () => {
           <p className="text-lg mb-2">Job details</p>
           <p>Amount: UGX {gig?.price}</p>
           <p>Location: {gig?.location}</p>
+          <p>Date: {gig?.date}</p>
           <p>{gig?.description}</p>
           <div className="flex justify-center items-center mt-3">
             <button className="bg-blue-700 text-white w-full rounded py-1 hover:scale-95">

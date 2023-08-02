@@ -16,4 +16,5 @@ export const GigSchema = yup.object().shape({
   description: yup.string().required().label("Description"),
   price: yup.number().required().label("Price"),
   location: yup.string().required().label("Location"),
+  date: yup.date().required().label("Location"),
 });

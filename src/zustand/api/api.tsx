@@ -6,6 +6,7 @@ export type Gig = {
   description: string;
   price: number;
   location: string;
+  date: ''
 };
 
 export type User = {
@@ -26,6 +27,7 @@ export const fetchGigs = async () => {
       description: gig.description,
       location: gig.location,
       price: gig.price,
+      date: gig.date
     };
   });
   return gigs;
