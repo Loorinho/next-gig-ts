@@ -8,6 +8,7 @@ import Layout from "./components/utilities/Layout";
 import GigList from "./components/GigList.tsx";
 import Gig from "./components/Gig.tsx";
 import GigDetails from "./components/GigDetails.tsx";
+import AddGig from "./components/AddGig.tsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/gigs" element={<GigList />} />
+        <Route path="/gigs/create" element={<AddGig />} />
         <Route path="/gigs/:id" element={<GigDetails />} />
       </Route>
     </Routes>
