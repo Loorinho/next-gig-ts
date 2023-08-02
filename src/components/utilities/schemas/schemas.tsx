@@ -12,8 +12,8 @@ export const RegistrationSchema = yup.object().shape({
 });
 
 export const GigSchema = yup.object().shape({
-  title: yup.string().required().label("Username"),
-  description: yup.string().required().label("Password"),
-  price: yup.number().required().label("Password"),
-  location: yup.string().required().label("Password"),
+  title: yup.string().required().label("Title"),
+  description: yup.string().required().label("Description"),
+  price: yup.number().required().label("Price"),
+  location: yup.string().required().label("Location"),
 });

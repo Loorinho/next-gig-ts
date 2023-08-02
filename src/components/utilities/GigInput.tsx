@@ -37,19 +37,38 @@ const GigInput = ({
       >
         {label}
       </label>
-      <input
-        type={type}
-        name={name}
-        className={`${
-          errors[`${name}`] && touched[`${name}`]
-            ? "focus:ring-1 focus:ring-red-500 border-red-500 focus:border-red-500"
-            : "focus:ring-1 focus:ring-blue-600 focus:border-blue-500"
-        } focus:outline-none shadow-sm py-2 px-4 w-full rounded`}
-        autoComplete="off"
-        placeholder={placeholder}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
+
+      {type === "textarea" ? (
+        <>
+          <textarea
+            name={name}
+            className={`${
+              errors[`${name}`] && touched[`${name}`]
+                ? "focus:ring-1 focus:ring-red-500 border-red-500 focus:border-red-500"
+                : "focus:ring-1 focus:ring-blue-600 focus:border-blue-500"
+            } focus:outline-none shadow-sm py-2 px-4 w-full rounded`}
+            autoComplete="off"
+            placeholder={placeholder}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          >
+          </textarea>
+        </>
+      ) : (
+        <input
+          type={type}
+          name={name}
+          className={`${
+            errors[`${name}`] && touched[`${name}`]
+              ? "focus:ring-1 focus:ring-red-500 border-red-500 focus:border-red-500"
+              : "focus:ring-1 focus:ring-blue-600 focus:border-blue-500"
+          } focus:outline-none shadow-sm py-2 px-4 w-full rounded`}
+          autoComplete="off"
+          placeholder={placeholder}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      )}
 
       <span className="block text-red-500">
         {errors[`${name}`] && touched[`${name}`] && <>{errors[`${name}`]}</>}

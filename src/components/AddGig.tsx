@@ -31,6 +31,8 @@ const AddGig = () => {
         price: values.price,
       };
 
+    //   console.log("Data: ", data)
+
       try {
         const response = await axios.post(url, data, {
           headers: {
@@ -64,7 +66,7 @@ const AddGig = () => {
           name="description"
           label="Description"
           placeholder="Enter your gig title here..."
-          type="text"
+          type="textarea"
           errors={errors}
           touched={touched}
         />
@@ -73,7 +75,7 @@ const AddGig = () => {
           handleChange={handleChange}
           name="location"
           label="Location"
-          placeholder="Enter your detailed description here..."
+          placeholder="Enter your detailed gig description here..."
           type="text"
           errors={errors}
           touched={touched}
@@ -88,10 +90,10 @@ const AddGig = () => {
           touched={touched}
         />
 
-        <div className="mt-3 w-full flex justify-between items-center">
+        <div className="mt-3 flex justify-between items-center">
           <button
             type="submit"
-            className=" px-3 text-center bg-blue-600 rounded-lg hover:scale-95 outline-none"
+            className=" w-full px-3 text-center bg-blue-600 text-white rounded-sm hover:scale-95 outline-none"
           >
             Save Gig
           </button>
