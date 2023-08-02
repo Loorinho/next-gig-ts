@@ -8,6 +8,12 @@ export type Gig = {
     location: string
 }
 
+export type User = {
+    id: number,
+    name: string,
+    eaail: string
+}
+
 
 export const fetchGigs = async () => {
     const url = "http://127.0.0.1:8000/api/gigs";
@@ -24,4 +30,19 @@ export const fetchGigs = async () => {
         }
     })
     return gigs   
+}
+
+export const registerUser = async () => {
+    const url = "http://127.0.0.1:8000/api/register";
+    const response = await axios.get(url);
+
+    const data = response.data.user
+    const user: User = data?.map((user: User) => {
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+        }
+    })
+    return user   
 }
