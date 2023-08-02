@@ -32,9 +32,14 @@ export const fetchGigs = async () => {
     return gigs   
 }
 
-export const registerUser = async () => {
+export const registerUser = async (_data: User) => {
     const url = "http://127.0.0.1:8000/api/register";
-    const response = await axios.get(url);
+    const response = await axios.post(url, _data, {
+         headers: {
+              "Content-Type": "application/json",
+              // "Authorization" : `Bearer ${localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):null}`
+        },
+    });
 
     const data = response.data.user
     const user: User = data?.map((user: User) => {
