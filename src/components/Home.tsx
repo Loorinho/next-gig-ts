@@ -24,15 +24,15 @@ const Home = () => {
 
   return (
     <div className="home flex justify-center items-center px-10">
-      <div className="text-white text-3xl">
-        <p className="text-center">
-          Getting a gig has never got easier. <br />
+      <div className="text-white">
+        <p className="text-center text-5xl">
+          Want to get things done? <br />
         </p>
-        <p className="mt-2 text-center">
+        <p className="mt-2 text-center text-2xl">
           Here at My
-          <span className="text-blue-700 px-1">NEXT</span>Gig, we are committed
-          to bringing your next gig closer to you based on your skillset like
-          cleaner, developer, car washer, cook, among others
+          <span className="text-blue-700 px-1">NEXT</span>Gig, you can find
+          talent <span className="font-semibold">your</span> way no matter the
+          skills.
         </p>
         {/* <p>based on your skillset</p> */}
         <div className="flex justify-center items-center">
