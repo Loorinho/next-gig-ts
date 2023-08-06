@@ -42,7 +42,7 @@
 }
 
 .dialog{
-  width: 400px;
+  width: 500px;
   min-height: 400px;
 }
 .dialog::backdrop{
