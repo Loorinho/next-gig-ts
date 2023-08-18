@@ -10,6 +10,14 @@ const GigList = () => {
     modalRef.current?.showModal();
   };
 
+  const addGig = async (e) => {
+    e.preventDefault();
+    console.log("Button clicked")
+    const data = {
+      
+    }
+  }
+
   return (
     <>
       <button
@@ -30,7 +38,7 @@ const GigList = () => {
         <p className="text-center font-semibold text-xl text-blue-600">
           Create a gig
         </p>
-        <form className="mt-3">
+        <form className="mt-3" onSubmit={(e)=> addGig(e)}>
           <div className="mb-2">
             <label className="block text-sm text-gray-600">Title</label>
             <input
@@ -69,7 +77,7 @@ const GigList = () => {
           </div>
 
           <div className="mt-8">
-            <button className="bg-blue-700 text-white w-full rounded py-2 px-3">Add Gig</button>
+            <button className="bg-blue-700 text-white w-full rounded py-2 px-3" type="submit">Add Gig</button>
           </div>
         </form>
       </dialog>
