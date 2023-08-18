@@ -1,9 +1,14 @@
 import Gig from "./Gig";
 import useGigStore from "../zustand/gigStore";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const GigList = () => {
   const gigs = useGigStore((state) => state.gigs);
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [location, setLocation] = useState("")
+  const [price, setPrice] = useState(0)
+  
   const modalRef = useRef<HTMLDialogElement>(null)!;
 
   const toggleModal = () => {
@@ -14,7 +19,10 @@ const GigList = () => {
     e.preventDefault();
     console.log("Button clicked")
     const data = {
-      
+      title,
+      description,
+      location,
+      price     
     }
   }
 
@@ -42,6 +50,8 @@ const GigList = () => {
           <div className="mb-2">
             <label className="block text-sm text-gray-600">Title</label>
             <input
+              value={title}
+              onChange={(e)=>setTitle(e.target.value)}
               type="text"
               className="w-full  outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
               placeholder="Enter gig title"
@@ -52,6 +62,8 @@ const GigList = () => {
             <label className="block text-sm text-gray-600">Description</label>
             <textarea
               rows={5}
+              value={description}
+              onChange={(e)=>setDescription(e.target.value)}
               className="w-full  outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
               placeholder="Enter gig description here.."
             ></textarea>
@@ -62,6 +74,8 @@ const GigList = () => {
               <label className="block text-sm text-gray-600">Location</label>
               <input
                 type="text"
+                value={location}
+                onChange={(e)=>setLocation(e.target.value)}
                 className="w-full outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
                 placeholder="Enter gig location"
               />
@@ -69,6 +83,8 @@ const GigList = () => {
             <div className="col-span-2">
               <label className="block text-sm text-gray-600">Price</label>
               <input
+                value={price}
+                onChange={(e)=>setTitle(+e.target.value)}
                 type="number"
                 className="w-full outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
                 placeholder="Enter gig price"
