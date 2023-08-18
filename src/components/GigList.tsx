@@ -31,14 +31,17 @@ const GigList = () => {
     };
 
     try{
-      const url = "http://localhost:8000/api/gig"
-      const response = await axios.post(url,{title,description,location,price,date}, {
+      const url = "http://localhost:8000/api/gigs"
+      const response = await axios.post(url,{title,description,location,price,date, userId: 1}, {
         headers: {
           "Content-Type": "application/json"
         }
       }
     )
-    console.log(response.data)
+    setGigs(response.data?.gigs)
+    // console.log(response.data)
+    // ref
+    modalRef.current?.close()
       
     }catch(error){
       console.error("Error: ", error)

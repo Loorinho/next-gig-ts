@@ -1,20 +1,24 @@
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios"
 import useGigStore from "../zustand/gigStore";
 
 const GigDetails = () => {
+  const navigate = useNavigate()
   const params = useParams();
   const gigId: number = Number(params.id);
   const gigs = useGigStore((state) => state.gigs);
+  const setGigs = useGigStore((state) => state.setGigs);
+
 
   const gig = gigs.find((gig) => gig.id === gigId)
 
-    const deleteGig =async (id) => {
+    const deleteGig =async (id: any) => {
       try{
         const url = `http://localhost:8000/api/gigs/${id}`
         const response = await axios.delete(url)
-        console.log(response.data)
+        setGigs(response.data.gigs)
+        navigate("/gigs")
       }catch(error){
         console.error(error)
       }
@@ -28,7 +32,7 @@ const GigDetails = () => {
       >
         <p className="flex flex-end items-center gap-5">
           <button className="bg-green-600 px-2 py-1 text-white rounded">Edit</button>
-          <button className="bg-red-600 px-2 py-1 text-white rounded" onClick(()=> deleteGig(gig?.id))>Delete</button>
+          <button className="bg-red-600 px-2 py-1 text-white rounded" onClick ={()=> deleteGig(gig?.id)}>Delete</button>
         </p>
         <h2 className="text-center text-blue-700 font-semibold border-b-2 pb-2 border-blue-700 mb-5">
           {gig?.title}

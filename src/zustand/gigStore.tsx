@@ -27,6 +27,7 @@ const useGigStore = create<GigStoreType>()(
           description: gig.description,
           location: gig.location,
           date: gig.date,
+          price: gig.price
         };
       });
       set({ gigs: theGigs });
