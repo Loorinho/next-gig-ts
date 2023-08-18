@@ -15,6 +15,10 @@ const GigDetails = () => {
         className="bg-white rounded-lg p-4 text-2xl"
         style={{ width: "500px" }}
       >
+        <p className="flex flex-end items-center gap-5">
+          <button className="bg-green-600 px-2 py-1 text-white rounded">Edit</button>
+          <button className="bg-red-600 px-2 py-1 text-white rounded">Delete</button>
+        </p>
         <h2 className="text-center text-blue-700 font-semibold border-b-2 pb-2 border-blue-700 mb-5">
           {gig?.title}
         </h2>
