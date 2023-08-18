@@ -33,19 +33,19 @@ const AddGig = () => {
         date: values.date
       };
 
-      console.log("Data: ", data)
+      // console.log("Data: ", data)
 
-    //   try {
-    //     const response = await axios.post(url, data, {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
+      try {
+        const response = await axios.post(url, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-    //     console.log("Response: ", response.data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
+        console.log("Response: ", response.data);
+      } catch (err) {
+        console.log(err);
+      }
     },
     validationSchema: GigSchema,
   });
