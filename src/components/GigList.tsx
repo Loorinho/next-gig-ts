@@ -8,22 +8,24 @@ const GigList = () => {
   const [description, setDescription] = useState("")
   const [location, setLocation] = useState("")
   const [price, setPrice] = useState(0)
+  const [date, setDate] = useState("")
   
   const modalRef = useRef<HTMLDialogElement>(null)!;
-
   const toggleModal = () => {
     modalRef.current?.showModal();
   };
 
   const addGig = async (e) => {
     e.preventDefault();
-    console.log("Button clicked")
+    // console.log("Button clicked")
     const data = {
       title,
       description,
       location,
-      price     
+      price, date     
     }
+
+    console.log("Data: ", data)
   }
 
   return (
@@ -89,9 +91,18 @@ const GigList = () => {
                 className="w-full outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
                 placeholder="Enter gig price"
               />
-            </div>
+            </div>   
           </div>
-
+           <div className="mb-2">
+              <label className="block text-sm text-gray-600">Date</label>
+              <input
+                value={date}
+                onChange={(e)=>setDate(e.target.value)}
+                type="date"
+                className="w-full  outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
+                placeholder="Enter gig date"        
+              />
+          </div>
           <div className="mt-8">
             <button className="bg-blue-700 text-white w-full rounded py-2 px-3" type="submit">Add Gig</button>
           </div>
