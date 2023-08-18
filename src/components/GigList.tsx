@@ -1,4 +1,5 @@
 import Gig from "./Gig";
+import axios from "axios"
 import useGigStore from "../zustand/gigStore";
 import { FormEvent, useRef, useState } from "react";
 
@@ -28,6 +29,20 @@ const GigList = () => {
       price,
       date,
     };
+
+    try{
+      const url = "http://localhost:8000/api/gig"
+      const response = await axios.post(url,{title,description,location,price,date}, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
+    console.log(response.data)
+      
+    }catch(error){
+      console.error("Error: ", error)
+    }
   };
 
   return (
