@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Gig } from "./api/api";
+
+import { GigType } from "../components/Gig";
 
 // type Gig = {
 //     id: number,
@@ -11,15 +12,24 @@ import { Gig } from "./api/api";
 // }
 
 type GigStoreType = {
-    gigs: Gig[],
-    setGigs: (gigs: Gig[]) => void
-}
+  gigs: GigType[];
+  setGigs: (gigs: GigType[]) => void;
+};
 
 const useGigStore = create<GigStoreType>()(
   persist((set) => ({
     gigs: [],
-    setGigs: (_gigs: Gig[]) => {
-      set({ gigs: _gigs });
+    setGigs: (_gigs: GigType[]) => {
+      const theGigs: any[] = _gigs.map((gig: GigType) => {
+        return {
+          id: gig.id,
+          title: gig.title,
+          description: gig.description,
+          location: gig.location,
+          date: gig.date,
+        };
+      });
+      set({ gigs: theGigs });
     },
   }), {
     name: 'gig-store'

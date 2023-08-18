@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 
-type Gig = {
+export type GigType = {
     id: number,
     title: string,
     description?:string,
     price: number,
-    location: string
+    location: string, 
+    date: string
 }
 type GigProps = {
-  gig: Gig
-}
+  gig: GigType;
+};
 
 const Gig = ({gig}: GigProps) => {
  
@@ -26,6 +27,7 @@ const Gig = ({gig}: GigProps) => {
         <p>UGX {gig?.price}</p>
       </div>
       <p>{gig?.description}</p>
+      {/* <p>{gig?.date}</p> */}
     </div>
   );
  

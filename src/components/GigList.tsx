@@ -1,32 +1,34 @@
 import Gig from "./Gig";
 import useGigStore from "../zustand/gigStore";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 const GigList = () => {
   const gigs = useGigStore((state) => state.gigs);
+  const setGigs = useGigStore((state) => state.setGigs);
+
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [location, setLocation] = useState("")
   const [price, setPrice] = useState(0)
   const [date, setDate] = useState("")
+
+
   
   const modalRef = useRef<HTMLDialogElement>(null)!;
   const toggleModal = () => {
     modalRef.current?.showModal();
   };
 
-  const addGig = async (e) => {
+  const addGig = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log("Button clicked")
     const data = {
       title,
       description,
       location,
-      price, date     
-    }
-
-    console.log("Data: ", data)
-  }
+      price,
+      date,
+    };
+  };
 
   return (
     <>
@@ -37,8 +39,8 @@ const GigList = () => {
         Add Gig
       </button>
       <div className="m-5 flex justify-center gap-2 flex-wrap ">
-        {gigs?.map((gig) => (
-          <div key={gig.id}>
+        {gigs?.map((gig, index: number) => (
+          <div key={index}>
             <Gig gig={gig} />
           </div>
         ))}
@@ -86,7 +88,7 @@ const GigList = () => {
               <label className="block text-sm text-gray-600">Price</label>
               <input
                 value={price}
-                onChange={(e)=>setTitle(+e.target.value)}
+                onChange={(e)=>setPrice(+e.target.value)}
                 type="number"
                 className="w-full outline-none border-2 border-blue-600 rounded px-3 py-1.5 focus:ring-1 focus:ring-blue-700"
                 placeholder="Enter gig price"

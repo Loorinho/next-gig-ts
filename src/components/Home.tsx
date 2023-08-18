@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { Gig, fetchGigs } from "../zustand/api/api";
+import { fetchGigs } from "../zustand/api/api";
 import useGigStore from "../zustand/gigStore";
 import { useMemo } from "react";
+import { GigType } from "./Gig";
 
 const Home = () => {
   const { data: mygigs, isSuccess: loadedGigs } = useQuery({
@@ -13,7 +14,7 @@ const Home = () => {
   const setGigs = useGigStore((state) => state.setGigs);
   const gigs = useGigStore((state) => state.gigs);
 
-  let theGigs: Gig[] = [];
+  let theGigs: GigType[] = [];
   if (loadedGigs) {
     theGigs = mygigs;
   }

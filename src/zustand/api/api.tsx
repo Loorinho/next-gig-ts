@@ -1,13 +1,14 @@
 import axios from "axios";
+import { GigType } from "../../components/Gig";
 
-export type Gig = {
-  id?: number;
-  title: string;
-  description: string;
-  price: number;
-  location: string;
-  date: ''
-};
+// export type Gig = {
+//   id?: number;
+//   title: string;
+//   description: string;
+//   price: number;
+//   location: string;
+//   date: ''
+// };
 
 export type User = {
   id: number;
@@ -20,7 +21,7 @@ export const fetchGigs = async () => {
   const response = await axios.get(url);
 
   const data = response.data.gigs;
-  const gigs: Gig[] = data?.map((gig: Gig) => {
+  const gigs: GigType[] = data?.map((gig: GigType) => {
     return {
       id: gig.id,
       title: gig.title,

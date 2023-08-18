@@ -1,7 +1,6 @@
 
 import { useParams } from "react-router-dom";
 import useGigStore from "../zustand/gigStore";
-import Gig from "./Gig";
 
 const GigDetails = () => {
   const params = useParams();
@@ -20,7 +19,7 @@ const GigDetails = () => {
           {gig?.title}
         </h2>
         <div className="px-4">
-          <p className="text-lg mb-2">Job details</p>
+          <p className="text-lg mb-2 text-center">{gig?.title} gig details</p>
           <p>Amount: UGX {gig?.price}</p>
           <p>Location: {gig?.location}</p>
           <p>Date: {gig?.date}</p>
