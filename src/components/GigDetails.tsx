@@ -1,5 +1,6 @@
 
 import { useParams } from "react-router-dom";
+import axios from "axios"
 import useGigStore from "../zustand/gigStore";
 
 const GigDetails = () => {
@@ -9,6 +10,16 @@ const GigDetails = () => {
 
   const gig = gigs.find((gig) => gig.id === gigId)
 
+    const deleteGig =async (id) => {
+      try{
+        const url = `http://localhost:8000/api/gigs/${id}`
+        const response = await axios.delete(url)
+        console.log(response.data)
+      }catch(error){
+        console.error(error)
+      }
+    }
+
   return (
     <div className="flex justify-center">
       <div
@@ -17,7 +28,7 @@ const GigDetails = () => {
       >
         <p className="flex flex-end items-center gap-5">
           <button className="bg-green-600 px-2 py-1 text-white rounded">Edit</button>
-          <button className="bg-red-600 px-2 py-1 text-white rounded">Delete</button>
+          <button className="bg-red-600 px-2 py-1 text-white rounded" onClick(()=> deleteGig(gig?.id))>Delete</button>
         </p>
         <h2 className="text-center text-blue-700 font-semibold border-b-2 pb-2 border-blue-700 mb-5">
           {gig?.title}
