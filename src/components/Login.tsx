@@ -3,14 +3,18 @@ import Logo from "../assets/images/mylogo.png";
 import axios from "axios";
 // import { ChangeEvent, FormEvent, useState } from "react";
 import {useForm} from 'react-hook-form'
-import { TLoginSchema } from "../features/zod/Schemas";
+import { TLoginSchema, LoginSchema } from "../features/zod/Schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 
 const Login = () => {
   const navigate = useNavigate()
   // const [username, setUsername] = useState("")
   // const [password, setPassword] = useState("");
 
-  const {register, handleSubmit, formState: {errors}, reset} = useForm<TLoginSchema>()
+  const {register, handleSubmit, formState: {errors}, reset} = useForm<TLoginSchema>({
+    resolver: zodResolver(LoginSchema)
+  })
 
   async function loginUser(data: TLoginSchema) {
  console.log(data)
@@ -61,6 +65,7 @@ const Login = () => {
 
           {...register("username")}
           />
+          {errors.username && <span>{`${errors.username.message}`}</span>}
         </div>
 
         <div>
