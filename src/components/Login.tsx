@@ -2,42 +2,44 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/mylogo.png";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
+import {useForm} from 'react-hook-form'
 
 const Login = () => {
   const navigate = useNavigate()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
 
+  const {register, handleSubmit, formData: {errors}, reset} = useForm()
 
-
-  async function login(e: FormEvent<HTMLFormElement>) {
+  async function loginUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const url = "http://127.0.0.1:8000/api/login";
-    const data = {
-      email: username,
-      password: password,
-    };
+    // const url = "http://127.0.0.1:8000/api/login";
+    // const data = {
+    //   email: username,
+    //   password: password,
+    // };
 
-    try {
-      const response = await axios.post(url, data, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      if(response.data.logged_in === true){
-        navigate("/home")
-      }
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const response = await axios.post(url, data, {
+    //     headers: {
+    //       Accept: "application/json",
+    //     },
+    //   });
+    //   if(response.data.logged_in === true){
+    //     navigate("/home")
+    //   }
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (
     <div className="login_form ">
       <form
         className="py-5 px-4 border-2 border-blue-600 rounded"
-        onSubmit={(e: FormEvent<HTMLFormElement>) => login(e)}
+{/*         onSubmit={(e: FormEvent<HTMLFormElement>) => login(e)} */}
+      onSubmit={handleSubmit(loginUser)}
       >
         <div className="flex justify-center items-center flex-col mb-4">
           <img src={Logo} width={150} height={150} alt="logo" />
