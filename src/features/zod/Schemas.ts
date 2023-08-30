@@ -6,12 +6,12 @@ export const UserSchema = z.object({
     password: z.string().min(6),
 })
 
-export type TUserSchema = z.infer(typeof UserSchema)
+export type TUserSchema = z.infer<typeof UserSchema>
 
 export const LoginSchema = z.object({
     username: z.string().email("Enter a valid email address"),
     password: z.string()
 })
 
-export type TLoginSchema = z.infer(typeof LoginSchema)
+export type TLoginSchema = z.infer<typeof LoginSchema>
 
