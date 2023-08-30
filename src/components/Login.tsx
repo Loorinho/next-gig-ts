@@ -11,7 +11,7 @@ const Login = () => {
 
   const {register, handleSubmit, formData: {errors}, reset} = useForm()
 
-  async function loginUser(e: FormEvent<HTMLFormElement>) {
+  async function loginUser(data: F) {
     e.preventDefault();
     // const url = "http://127.0.0.1:8000/api/login";
     // const data = {
@@ -58,26 +58,28 @@ const Login = () => {
             placeholder="Enter your username..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-            value={username}
+{/*             value={username}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setUsername(e.target.value)
-            }
+            } */}
+          {...register("username")}
           />
         </div>
 
         <div>
           <label htmlFor="" className="block text-sm text-gray-600 mt-3">
-            Username
+            Password
           </label>
           <input
             type="password"
             placeholder="Enter your password..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-            value={password}
+{/*             value={password}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setPassword(e.target.value)
-            }
+            } */}
+          {...register("password")}
           />
         </div>
 
