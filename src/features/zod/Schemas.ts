@@ -9,8 +9,8 @@ export const UserSchema = z.object({
 export type TUserSchema = z.infer<typeof UserSchema>
 
 export const LoginSchema = z.object({
-    username: z.string().email("Enter a valid email address"),
-    password: z.string()
+    email: z.string().email("Enter a valid email address"),
+    password: z.string().min(8, "Enter a password")
 })
 
 export type TLoginSchema = z.infer<typeof LoginSchema>

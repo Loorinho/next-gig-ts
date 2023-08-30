@@ -9,41 +9,35 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const Login = () => {
   const navigate = useNavigate()
-  // const [username, setUsername] = useState("")
-  // const [password, setPassword] = useState("");
 
-  const {register, handleSubmit, formState: {errors}, reset} = useForm<TLoginSchema>({
+  const {register, handleSubmit, formState: {errors}} = useForm<TLoginSchema>({
     resolver: zodResolver(LoginSchema)
   })
 
   async function loginUser(data: TLoginSchema) {
  console.log(data)
-    // const url = "http://127.0.0.1:8000/api/login";
-    // const data = {
-    //   email: username,
-    //   password: password,
-    // };
+    const url = "http://127.0.0.1:8000/api/login";
 
-    // try {
-    //   const response = await axios.post(url, data, {
-    //     headers: {
-    //       Accept: "application/json",
-    //     },
-    //   });
-    //   if(response.data.logged_in === true){
-    //     navigate("/home")
-    //   }
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const response = await axios.post(url, data, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if(response.data.logged_in === true){
+        navigate("/home")
+      }
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
     <div className="login_form ">
       <form
         className="py-5 px-4 border-2 border-blue-600 rounded"
-      onSubmit={handleSubmit(loginUser)}
+        onSubmit={handleSubmit(loginUser)}
       >
         <div className="flex justify-center items-center flex-col mb-4">
           <img src={Logo} width={150} height={150} alt="logo" />
@@ -62,10 +56,11 @@ const Login = () => {
             placeholder="Enter your username..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-
-          {...register("username")}
+            {...register("email")}
           />
-          {errors.username && <span>{`${errors.username.message}`}</span>}
+          {errors.email && (
+            <span className="text-red-500 text-sm">{`${errors.email.message}`}</span>
+          )}
         </div>
 
         <div>
@@ -77,8 +72,11 @@ const Login = () => {
             placeholder="Enter your password..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-          {...register("password")}
+            {...register("password")}
           />
+          {errors.password && (
+            <span className="text-red-500 text-sm">{`${errors.password.message}`}</span>
+          )}
         </div>
 
         <div className="flex justify-center items-center mt-5">
