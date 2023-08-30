@@ -9,10 +9,10 @@ const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
 
-  const {register, handleSubmit, formData: {errors}, reset} = useForm()
+  const {register, handleSubmit, formState: {errors}, reset} = useForm<TLoginSchema>()
 
-  async function loginUser(data: F) {
-    e.preventDefault();
+  async function loginUser(data: TLoginSchema) {
+ console.log(data)
     // const url = "http://127.0.0.1:8000/api/login";
     // const data = {
     //   email: username,
@@ -38,7 +38,6 @@ const Login = () => {
     <div className="login_form ">
       <form
         className="py-5 px-4 border-2 border-blue-600 rounded"
-{/*         onSubmit={(e: FormEvent<HTMLFormElement>) => login(e)} */}
       onSubmit={handleSubmit(loginUser)}
       >
         <div className="flex justify-center items-center flex-col mb-4">
@@ -58,10 +57,7 @@ const Login = () => {
             placeholder="Enter your username..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-{/*             value={username}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setUsername(e.target.value)
-            } */}
+
           {...register("username")}
           />
         </div>
@@ -75,10 +71,6 @@ const Login = () => {
             placeholder="Enter your password..."
             className="w-full px-3 py-2 rounded focus:ring-1 ring-blue-700 outline-none border-2 border-blue-600"
             autoComplete="off"
-{/*             value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            } */}
           {...register("password")}
           />
         </div>
