@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/mylogo.png";
 import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+// import { ChangeEvent, FormEvent, useState } from "react";
 import {useForm} from 'react-hook-form'
+import { TLoginSchema } from "../features/zod/Schemas";
 
 const Login = () => {
   const navigate = useNavigate()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("")
+  // const [password, setPassword] = useState("");
 
   const {register, handleSubmit, formState: {errors}, reset} = useForm<TLoginSchema>()
 
